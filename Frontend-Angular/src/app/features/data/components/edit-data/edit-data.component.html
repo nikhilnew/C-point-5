@@ -1,0 +1,298 @@
+<!-- <div class="tab-pane" id="info" [ngClass]="{ 'active':activeTab==='info'}"> -->
+    <form [formGroup]="EditForm">
+        <div class="card card-default" id="test">
+            <div class="card-header">
+                <h3 class="card-title" style="text-align: center;"><strong> Add OR PUT DETAILS </strong></h3>
+                <!-- <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i> </button>
+                    </div> -->
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label for="">GST No.
+                        </label>
+                        <input type="text" class="form-control" formControlName="GSTNo" id="" placeholder="Enter GST No.">
+                        <!-- <div *ngIf="f.project_name.touched && f.project_name.invalid" class="invalid-feedback">
+                            <div *ngIf="f.project_name.errors.required">GST No is
+                                required.
+                            </div>
+                        </div> -->
+                    </div>
+    
+                    <div class="form-group col-md-4">
+                        <label for="">Pan No.
+                        </label>
+                        <input type="text" class="form-control" formControlName="PANNo" id="" placeholder="Pan No.">
+                        <!-- <div *ngIf="f.project_owner.touched && f.project_owner.invalid" class="invalid-feedback">
+                            <div *ngIf="f.project_owner.errors.required">project_owner
+                                is
+                                required.
+                            </div>
+                        </div> -->
+                    </div>
+    
+                    <div class="form-group col-md-4">
+                        <label  style="color: red;" for="">Code <span class="text-danger">*</span>
+                        </label>
+                        <input type="email" class="form-control" formControlName="Code" id="" placeholder="Enter Code"
+                            (keyup)="getprojectname($event)">
+    
+                        <!-- <div *ngIf="f.project_owner_email.touched && f.project_owner_email.invalid"
+                            class="invalid-feedback">
+                            <div *ngIf="f.project_owner_email.errors.required">
+                                Project Owner Email is required.
+                            </div>
+                        </div> -->
+                    </div>
+    
+                </div>
+                <br>
+    
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label  style="color: red;" for="">Name <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" formControlName="Name" id="" placeholder="Enter Name">
+                        <!-- <select class="form-select" formControlName="status" id="inputstatus4">
+                            <option value="" disabled>Select Status</option>
+                            <option value="Working Progress">Working Progress</option>
+                            <option value="Completed">Completed</option>
+                            <option value="Delay">Delay</option>
+                            <option value="On Hold">On Hold</option>
+                        </select> -->
+                        <!-- <div *ngIf="f.status.touched && f.status.invalid" class="invalid-feedback">
+                            <div *ngIf="f.status.errors.required">status is required.
+                            </div>
+                        </div> -->
+                    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+                    <div class="form-group col-md-4">
+                        <label for="">Address
+                        </label>
+                        <textarea type="text" class="form-control" formControlName="Address" id=""
+                            placeholder="Enter Address"></textarea>
+    
+                        <!-- <div *ngIf="f.client_name.touched && f.client_name.invalid" class="invalid-feedback">
+                            <div *ngIf="f.client_name.errors.required">Address is
+                                required.
+                            </div>
+                        </div> -->
+                    </div>
+    
+                    <div class="form-group col-md-4">
+                        <label for="">Pincode
+                        </label>
+                        <input type="text" class="form-control" (keypress)="keyPressNumbers($event)" maxlength="6" formControlName="Pincode" id="" placeholder="Enter Pincode">
+    
+                        <!-- <div *ngIf="f.client_poc1.touched && f.client_poc1.invalid" class="invalid-feedback">
+                            <div *ngIf="f.client_poc1.errors.required">client_poc1 is
+                                required.
+                            </div>
+                        </div> -->
+                    </div>
+    
+    
+                </div>
+    
+                <br>
+    
+    
+                <div class="row">
+    
+                    <div class="form-group col-md-4">
+                        <label for="">Country
+                        </label>
+                        <select class="form-control select2" formControlName="Country" (change)="changeCountry($event)">
+                            <option selected="selected">Select here</option>
+                            <option *ngFor="let i of countries" [value]="i.country_id">{{i.country_name}}</option>
+                        </select>
+                    </div>
+    
+                    <div class="form-group col-md-4">
+                        <label for="">State/Province
+                        </label>
+                        <select class="form-control select2" formControlName="State" (change)="changeStates($event)">
+                            <option selected="selected">Select here</option>
+                            <option *ngFor="let i of states" [value]="i.state_id">{{i.state_name}}</option>
+                        </select>
+                    </div>
+    
+                    <div class="form-group col-md-4">
+                        <label for="">City
+                        </label>
+                        <select class="form-control select2" formControlName="City">
+                            <option selected="selected">Select here</option>
+                            <option *ngFor="let i of cities">{{i.city_name}}</option>
+                        </select>
+                    </div>
+                </div>
+    
+    
+                <br>
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label for="">Mobile No.</label>
+                        <input type="text" class="form-control" formControlName="MobileNo" id="" placeholder="Mobile No"
+                            minlength="10" maxlength="10" (keypress)="keyPressNumbers($event)" name="MobileNo">
+    
+    
+    
+                        <div *ngIf="submitted && f.MobileNo.errors" class="invalid-feedback">
+                            <div *ngIf="f.MobileNo.errors.required">Mobile No
+                                is required
+                            </div>
+                        </div>
+    
+    
+    
+                    </div>
+    
+                    <div class="form-group col-md-4">
+                        <label for="">Email</label>
+                        <input type="email" class="form-control" formControlName="Email" id="" placeholder="Enter Email">
+    
+                    </div>
+    
+                </div>
+                <br>
+    
+                <div class="row">
+    
+                    <div class="form-group col-md-4">
+                        <label for="">Latitude</label>
+                        <input type="text" class="form-control"  (keypress)="keyPressNumbers($event)" formControlName="Latitude" id=""
+                            placeholder="Enter Latitude">
+    
+                    </div>
+    
+                    <div class="form-group col-md-4">
+                        <label for="">Longitude</label>
+                        <input type="text" class="form-control" (keypress)="keyPressNumbers($event)" formControlName="Longitude" id=""
+                            placeholder="Enter Longitude">
+    
+                    </div>
+    
+                    <div class="form-group col-md-4">
+                        <label for="">Currency</label>
+                        <input type="text" class="form-control" formControlName="Currency" id=""
+                            placeholder="Enter Currency">
+    
+                    </div>
+    
+    
+                </div>
+            </div>
+        </div>
+        <div class="card card-default">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <strong>Contact Person Detail</strong>
+                </h3>
+                <!-- <div class="card-tools">
+                    <a class="btn btn-primary mt-2" (click)="addrepository()" style="color: white">+</a>
+    
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div> -->
+            </div>
+    
+    
+            <div class="card-body">
+                <form [formGroup]="repositoryForm">
+                    <div formArrayName="repository">
+                        <div *ngFor="
+      let passengerGroup of repository?.controls;
+      let i = index
+    " [formGroupName]="i">
+                            <header hidden>{{ i }}</header>
+    
+                            <div class="row">
+                               
+                                <div class="form-group col-md-4">
+                                    <label for=""  style="color: red;">Name<span class="text-danger">*</span>
+                                    </label>
+                                    <input type="text" class="form-control" formControlName="Name" id="" placeholder="Name">
+    
+                                </div>
+    
+    
+                                <div class="form-group col-md-4">
+                                    <label for=""  style="color: red;">Mobile No<span class="text-danger">*</span>
+                                    </label>
+                                    <input type="text" class="form-control" formControlName="MobileNo" id=""
+                                        placeholder="Mobile No" minlength="10" maxlength="10"
+                                        (keypress)="keyPressNumbers($event)">
+    
+                                </div>
+    
+                                <div class="form-group col-md-3">
+                                    <label for="" >Email
+                                    </label>
+                                    <input type="email" class="form-control" formControlName="Email1" id=""
+                                        placeholder="nikhilkurmi361@gmail.com" >
+    
+                                </div>
+                            </div>
+                            <br>
+    
+                            <div class="row">
+    
+                                <div class="form-group col-md-4">
+                                    <label for=""  style="color: red;">Department<span class="text-danger">*</span>
+                                    </label>
+                                    <input type="text" class="form-control" formControlName="Department" id=""
+                                        placeholder="Department">
+    
+                                </div>
+    
+                                <div class="form-group col-md-4">
+                                    <label for=""  style="color: red;">Designation<span class="text-danger">*</span>
+                                    </label>
+                                    <input type="text" class="form-control" formControlName="Designation" id=""
+                                        placeholder="Designation">
+    
+                                </div>
+    
+    
+    
+    
+                                <div class="form-group col-md-12 text-end">
+    
+                                    <a class="btn btn-primary mt-2" (click)="addrepository()" style="color: white">+Add</a>
+                                    &nbsp;
+                                    <button class="btn btn-danger mt-2" (click)="removerepository(i)">- Cancel</button>
+                                </div>
+    
+                            </div>
+    
+    
+    
+                        </div>
+    
+                    </div>
+                </form>
+            </div>
+        </div>
+    
+        <br>
+    
+        <div class="row mt-12">
+            <div class="col-md-12 text-center">
+    
+                <button type="submit" class="btn btn-success btn-blue mb-3" [disabled]="EditForm.invalid" (click)="updateproject()">Update</button>&nbsp;&nbsp;
+                <button type="Reset" class="btn btn-danger btn-blue mb-3" [routerLink]="['/view/']">Cancel</button>
+    
+    
+            </div>
+        </div>
+    </form>
+    <!-- </div> -->

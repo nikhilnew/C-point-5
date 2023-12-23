@@ -1,0 +1,104 @@
+<div>
+<form method="post" [formGroup]="projectForm" (ngSubmit)="submitData()">
+    <div class="card card-default" id="test">
+        <div class="card-header">
+            <h3 class="card-title" style="text-align: center;"><strong>Add Data </strong></h3>        
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <label for="">Name<span
+                        class="form-label-span" style="color:#ff0000;">
+                        *</span>
+                    </label>
+                    <input type="text" class="form-control" formControlName="name" id="" (keypress)="ValidateAlpha($event)" placeholder="Enter name">            
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="">Category<span
+                        class="form-label-span" style="color:#ff0000;">
+                        *</span>
+                    </label>
+                    <input type="text" class="form-control" formControlName="category" id="" (keypress)="ValidateAlpha($event)" placeholder="Enter category">
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label   for="">Quantity<span
+                        class="form-label-span" style="color:#ff0000;">
+                        *</span>
+                    </label>
+                    <input type="input" class="form-control" formControlName="quantity"  id="" (keypress)="keyPressNumbers($event)" placeholder="Enter quantity"
+                        >
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="">Price<span
+                        class="form-label-span" style="color:#ff0000;">
+                        *</span></label>
+                    <input type="input" class="form-control" formControlName="price" id=""  (keypress)="keyPressNumbers($event)" placeholder="Enter price" > 
+                                    
+                </div>
+              
+
+                <div class="form-group col-md-6">
+                    <label for="">Expiration date<span
+                        class="form-label-span" style="color:#ff0000;">
+                        *</span>
+                    </label>
+                    <input type="date" class="form-control"  formControlName="expiration_date" id="" >   
+                </div>
+            </div>
+            <br>
+            <div class="row">
+
+                <div class="form-group col-md-4">
+                    <label for="">Country
+                    </label>
+                    <select class="form-control select2"  (change)="changeCountry($event)">
+                        <option selected="selected">Select here</option>
+                        <option *ngFor="let i of countries" [value]="i.country_id">{{i.country_name}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="">State/Province
+                    </label>
+                    <select class="form-control select2"  (change)="changeStates($event)">
+                        <option selected="selected">Select here</option>
+                        <option *ngFor="let i of states" [value]="i.state_id">{{i.state_name}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="">City
+                    </label>
+                    <select class="form-control select2" >
+                        <option selected="selected">Select here</option>
+                        <option *ngFor="let i of cities">{{i.city_name}}</option>
+                    </select>
+                </div>
+            </div>
+
+
+          
+        </div>
+    </div>
+  
+
+    <br>
+
+    <div class="row mt-12">
+        <div class="col-md-12 text-center">
+
+            <button type="submit" class="btn btn-success btn-blue mb-3" [disabled]="projectForm.invalid">Save</button>&nbsp; &nbsp;
+            <button type="Reset" class="btn btn-danger btn-blue mb-3" [routerLink]="['/view/']">Cancel</button>
+
+
+        </div>
+    </div>
+</form>
+
+</div>

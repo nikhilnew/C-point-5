@@ -1,0 +1,161 @@
+
+
+/*--------------------------------------------------------------
+	# Override some default Bootstrap stylings
+	--------------------------------------------------------------*/
+.active {
+  color: #011045 !important;
+  background-color: #ffffff !important;
+}
+
+/*--------------------------------------------------------------
+	# Section start
+	--------------------------------------------------------------*/
+.section {
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #efefef;
+  border-radius: 10px;
+}
+
+.form-outline {
+  position: relative;
+}
+
+.form-input {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 0.3rem;
+  outline: none;
+  padding: 1rem;
+  background: #fff;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  z-index: 1;
+}
+
+.form-label {
+  position: absolute;
+  left: 1rem;
+  top: 0.6rem;
+  padding: 0 0.55rem;
+  background-color: #fff;
+  color: rgba(206, 206, 206, 0.6);
+  transition: 0.3s;
+  font-weight: normal;
+  letter-spacing: 0.15px;
+  opacity: 1;
+  z-index: 1;
+  margin-left: 3px;
+}
+
+label {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+}
+
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 35px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  width: 14px;
+  height: 14px;
+  left: 0px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 150px;
+}
+
+input:checked + .slider {
+  background-color: #00990f;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px;
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 20px;
+}
+
+.slider.round:before {
+  border-radius: 60%;
+}
+
+.lablenew {
+  position: relative;
+  top: -50px;
+  background: white;
+  left: 10px;
+  font-size: 15px;
+  padding: 0px 5px;
+  font-size: 13px;
+}
+
+.uploaddoc {
+  position: relative;
+  top: 0;
+  background: white;
+  padding: 0px 5px;
+  text-align: center;
+}
+
+.w-30 {
+  width: 30%;
+}
+
+/* // ........../ css start.........// */
+.zoom {
+  padding: 0px;
+  transition: transform 0.2s;
+  /* width: 200px; */
+  /* height: 200px; */
+  margin: 0 auto;
+  border-radius: 2px;
+}
+
+.zoom:hover {
+  /* padding: 20px; */
+  /* IE 9 */
+  /* Safari 3-8 */
+  transform: scale(1.5);
+  width: 100px;
+  height: 100px;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #112260;
+}/*# sourceMappingURL=main.css.map */

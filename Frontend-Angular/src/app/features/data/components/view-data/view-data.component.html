@@ -1,0 +1,90 @@
+<main id="main" class="main">
+
+    <section class="section">
+        <!--Table code start-->
+        <h3 style="text-align: center;">Grocery inventory</h3>
+
+        <div class="row">
+            <div class="col-md-12 text-end">
+                <a class="btn btn-primary btn-blue mb-3" [routerLink]="['/apply']">+ Add Data</a>
+              
+            </div>
+        </div>
+        <br>
+
+        <div class="row">
+
+            <div class="col-md-3">
+                <label>Show
+                    <select (change)="onTableSizeChange($event)">
+                        <option *ngFor="let size of tableSizes">{{size}}</option>
+                    </select> entries</label>
+            </div>
+
+            <div class="col-md-9" style="float:right;text-align: right">
+                <pagination-controls previousLabel="Prev" nextLabel="Next"
+                    (pageChange)="onTabledataChange($event)"></pagination-controls>
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div class="row">
+
+            <div class="col-md-12 overflow-auto">
+
+                <table class="table text-center">
+                    <thead>
+                        <tr>
+                            <!-- <th><input type="checkbox" class=""></th> -->
+                            <!-- <th scope="col">S.No.</th> -->
+                            <th scope="col">Action</th>
+                            <!-- <th scope="col">RowId</th> -->
+                            <th scope="col">Name</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Expiration Date</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            *ngFor="let all_postEach of items | paginate: {itemsPerPage: tableSize, currentPage: page, totalItems: count }; let i = index;">
+                            <!-- <th><input type="checkbox" class=""></th> -->
+                            <!-- <td>{{i+1}}</td> -->
+                            <td>
+                             
+
+                                    <div >
+                                        <a style="color: blue;" (click)="deletePost(all_postEach.id)">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </div>
+                              
+                            </td>
+                         
+
+                            <td>{{all_postEach.name}}</td>
+                            <td>{{all_postEach.category}} </td>
+                            <td>{{all_postEach.quantity }}</td>
+                         
+                            <td>{{all_postEach.price}}</td>
+                            <td>{{all_postEach.expiration_date | date:'dd-MM-yyyy'}}</td>
+                         
+
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+
+
+
+        <!--Table code end-->
+    </section>
+</main>
